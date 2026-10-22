@@ -4,6 +4,7 @@ All notable changes to this project are documented here. Dates are when each cha
 
 ## Unreleased
 
+- If the script tag ends up on a page more than once, only the first copy builds the toolbar, so visitors never see two buttons. Site owners no longer need to check whether it is already installed before adding it.
 - Toggle button is inserted first in the page's `<body>`, not appended last, so keyboard and screen-reader users can reach it without tabbing through the whole page first.
 - A site's `data-brand-accent` is now checked against the panel's white background (WCAG 3:1 minimum for UI components). If it fails, the widget falls back to the default amber instead of shipping an unreadable focus outline.
 - Toggle button and its icon are bigger (56px button, 28px icon, up from 48px and 20px) for visibility at a glance.

@@ -31,8 +31,7 @@ See [CHANGELOG.md](CHANGELOG.md) for what shipped and when.
 
 **There is nothing to install or deploy.** Good Heart Tech hosts the widget on Cloudflare at `accessibility.goodhearttech.org`, so you only add one line of code to your website. No account, no API key, no build step, no files to upload.
 
-1. **Check whether it is already there.** Search your site's code or footer for `accessibility.goodhearttech.org`. If you find it, you are finished.
-2. **If it isn't, paste this one tag** just before the closing `</body>` tag (or into your site's "footer code" or "custom code" area):
+**Paste this one tag** just before the closing `</body>` tag (or into your site's "footer code" or "custom code" area). If you are not sure whether it is already on your site, just add it: if the tag appears on a page twice, the toolbar still only appears once.
 
 ```html
 <script src="https://accessibility.goodhearttech.org/widget.js" defer></script>

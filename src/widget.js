@@ -419,6 +419,9 @@
   }
 
   function init() {
+    // If the script tag ends up on a page twice, only the first copy builds the toolbar, so
+    // visitors never get two buttons. Makes "I already added it" a non-issue for site owners.
+    if (document.querySelector(".ght-a11y-root")) return;
     injectStyles();
     ensureFontAwesomeLoaded();
     applyBrandColors();
