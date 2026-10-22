@@ -2,7 +2,7 @@
   "name": "accessibility-widget-for-websites",
   "version": "0.1.0",
   "private": true,
-  "description": "Free, self-hosted accessibility toolbar widget for any website.",
+  "description": "Free, open-source accessibility toolbar widget for any website. Hosted for free by Good Heart Tech.",
   "scripts": {
     "build": "node build.js"
   },

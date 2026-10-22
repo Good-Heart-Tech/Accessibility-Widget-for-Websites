@@ -2,16 +2,18 @@
 
 <img src="assets/icon-mark.svg" alt="" width="72" height="72" align="right">
 
-A free, open-source, self-hosted accessibility toolbar that drops into any website with a single `<script>` tag. Built by Good Heart Tech, a nonprofit MSP, for its own nonprofit partners' sites, but there's nothing nonprofit-specific about it. Any site can use it.
+A free, open-source accessibility toolbar that drops into any website with a single `<script>` tag. Good Heart Tech hosts it for you on Cloudflare, so there is nothing to download, build, or deploy: add one line of code to your site (if it isn't there already) and you are done. Built by Good Heart Tech, a nonprofit MSP, for its own nonprofit partners' sites, but there's nothing nonprofit-specific about it. Any site can use it.
 
 **Live demo:** try it right now on [goodhearttech.org](https://goodhearttech.org) or [wosp.app](https://wosp.app), both run this widget in production. No install needed to see it in action.
+
+**Plain-language guide:** [goodhearttech.org/accessibility-widget](https://goodhearttech.org/accessibility-widget) explains what it does and how to add it, written for site owners rather than developers.
 
 ## Why this exists
 
 Paid overlay widgets (EqualWeb, AccessiBe, etc.) charge ongoing subscriptions and market themselves as full ADA/WCAG "compliance," which they are not. This project is a genuinely free, no-lock-in alternative that:
 
-- Adds visible, easy-to-find accessibility controls (font size, contrast, underline links, dyslexia-friendly font, reduce motion, etc.)
-- Is self-hosted, so there's no third-party vendor, no tracking, and no recurring cost
+- Adds visible, easy-to-find display controls: contrast modes, text size and spacing, highlighted links and headings, a readable font, a larger cursor, and read-aloud
+- Is free and hosted by Good Heart Tech (or by you, if you prefer), with no account, no tracking code, and no recurring cost
 - Is small enough for a volunteer engineer to read and modify in one sitting
 
 **Important:** This widget improves usability. It does not make a site WCAG/ADA compliant on its own. Real compliance still requires correct semantic HTML, alt text, color contrast in the base design, and keyboard navigation in the underlying site.
@@ -27,11 +29,18 @@ See [CHANGELOG.md](CHANGELOG.md) for what shipped and when.
 
 ## Installation
 
-Add one tag to any static site (works on Cloudflare Pages, WordPress, Squarespace, Wix, anywhere you can paste HTML). The widget injects its own styles, so no separate stylesheet link is needed:
+**There is nothing to install or deploy.** Good Heart Tech hosts the widget on Cloudflare at `accessibility.goodhearttech.org`, so you only add one line of code to your website. No account, no API key, no build step, no files to upload.
+
+1. **Check whether it is already there.** Search your site's code or footer for `accessibility.goodhearttech.org`. If you find it, you are finished.
+2. **If it isn't, paste this one tag** just before the closing `</body>` tag (or into your site's "footer code" or "custom code" area):
 
 ```html
 <script src="https://accessibility.goodhearttech.org/widget.js" defer></script>
 ```
+
+That works on anything that lets you add a script tag: plain HTML and static sites (including Cloudflare Pages), WordPress, Squarespace, Wix, and similar. Some platforms limit custom code to paid plans. The widget injects its own styles, so no separate stylesheet link is needed.
+
+Because the file is served from our hosting, improvements and fixes reach every site automatically, usually within about four hours (the file is cached for four hours). If you would rather freeze a version or avoid loading a file from a third party, see [Self-hosting](#self-hosting-optional) below.
 
 ### Brand colors
 
@@ -73,9 +82,11 @@ The value is exactly the class string you would put on an `<i>` tag, so any free
 
 **The tradeoff this introduces:** unlike every other part of this widget, the icon is real Font Awesome markup, not an inline SVG, so it needs Font Awesome's CSS and font files to render. The widget checks the page for an existing Font Awesome `<link>` or Kit `<script>` tag first. If the host site already loads Font Awesome (Good Heart Tech's site does), nothing extra happens. If it does not, the widget adds one `<link>` to Font Awesome's CDN (`cdnjs.cloudflare.com`) itself. That is the one exception to this project having no other external network calls.
 
-## Deploying this project (Cloudflare Pages)
+## Self-hosting (optional)
 
-This repo is meant to be connected once to a Cloudflare Pages project so every partner site shares the same hosted widget:
+**Most people should skip this section.** It is only for you if you want your own copy of the widget on your own domain (for example, to pin a specific version or to avoid loading a script from another host). It is not needed to use the widget.
+
+This repo can be connected once to a Cloudflare Pages project so every site you manage shares one hosted copy. This is how Good Heart Tech runs the hosted version above:
 
 1. In the Cloudflare dashboard, create a new Pages project and connect it to this GitHub repo's `main` branch.
 2. Build command: `npm run build`
@@ -94,4 +105,4 @@ Then open `demo/index.html` through a local static server (not `file://`, since 
 
 ## License
 
-MIT, see [LICENSE](LICENSE).
+GNU AGPL-3.0, see [LICENSE](LICENSE).
