@@ -223,6 +223,15 @@
     if (label) label.textContent = speaking ? "Stop reading" : "Read page aloud";
   }
 
+  // Which corner the toggle button (and its panel) sits in, set by data-position on the script
+  // tag: bottom-left (default), bottom-right, top-left, or top-right. Anything else is ignored
+  // and the widget stays bottom-left, the same as leaving the attribute off.
+  function applyPosition(container) {
+    var value = SCRIPT_EL && (SCRIPT_EL.getAttribute("data-position") || "").trim().toLowerCase();
+    if (value === "top-left" || value === "top-right") container.classList.add("ght-a11y-top");
+    if (value === "bottom-right" || value === "top-right") container.classList.add("ght-a11y-right");
+  }
+
   // The floating toggle button's own icon is real Font Awesome markup (an <i> tag with
   // Font Awesome classes), not an inline SVG, so a site can override it to any Font Awesome
   // icon via data-icon on the script tag. See README "Icon override" for the full explanation
@@ -458,11 +467,12 @@
 
     var container = document.createElement("div");
     container.className = "ght-a11y-root";
+    applyPosition(container);
     container.appendChild(toggleBtn);
     container.appendChild(panelEl);
     // Inserted first, not appended last: a keyboard or screen-reader user who just landed on
     // the page would otherwise have to tab through the entire page to reach this. Visually it
-    // stays bottom-left regardless of DOM order, since the button and panel are position: fixed.
+    // stays in its corner regardless of DOM order, since the button and panel are position: fixed.
     document.body.insertBefore(container, document.body.firstChild);
   }
 

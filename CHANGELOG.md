@@ -4,6 +4,8 @@ All notable changes to this project are documented here. Dates are when each cha
 
 ## Unreleased
 
+- Added `data-position` on the script tag to move the button to any corner: `bottom-left` (default), `bottom-right`, `top-left`, or `top-right`. The panel opens from the same corner. Sites that don't set it are unchanged.
+- The options panel now stays fully on screen on 360px-wide phones and short windows. It used to run about 10px off the edge because its padding wasn't counted in its width. Desktop size is unchanged.
 - If the script tag ends up on a page more than once, only the first copy builds the toolbar, so visitors never see two buttons. Site owners no longer need to check whether it is already installed before adding it.
 - Toggle button is inserted first in the page's `<body>`, not appended last, so keyboard and screen-reader users can reach it without tabbing through the whole page first.
 - A site's `data-brand-accent` is now checked against the panel's white background (WCAG 3:1 minimum for UI components). If it fails, the widget falls back to the default amber instead of shipping an unreadable focus outline.

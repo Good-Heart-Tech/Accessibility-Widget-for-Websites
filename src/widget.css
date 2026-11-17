@@ -136,7 +136,11 @@ html.ght-a11y-cursor-large * {
   left: 16px;
   bottom: 84px;
   z-index: 2147483000;
-  width: min(320px, calc(100vw - 32px));
+  /* border-box so padding and border count toward width and height, keeping the panel inside
+     the screen on narrow phones (360px) and short windows. 354px matches the old desktop width.
+     100% (not 100vw) is the viewport minus any scrollbar, since the panel is position: fixed. */
+  box-sizing: border-box;
+  width: min(354px, calc(100% - 32px));
   max-height: min(640px, calc(100vh - 90px));
   overflow-y: auto;
   scrollbar-width: thin;
@@ -153,6 +157,24 @@ html.ght-a11y-cursor-large * {
 
 .ght-a11y-panel[hidden] {
   display: none;
+}
+
+/* Corner placement: bottom-left by default. data-position on the script tag adds these
+   classes to the root, moving the button and opening the panel from the same corner. */
+.ght-a11y-right .ght-a11y-toggle-btn,
+.ght-a11y-right .ght-a11y-panel {
+  left: auto;
+  right: 16px;
+}
+
+.ght-a11y-top .ght-a11y-toggle-btn {
+  bottom: auto;
+  top: 16px;
+}
+
+.ght-a11y-top .ght-a11y-panel {
+  bottom: auto;
+  top: 84px;
 }
 
 .ght-a11y-panel-heading {

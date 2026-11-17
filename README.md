@@ -81,6 +81,24 @@ The value is exactly the class string you would put on an `<i>` tag, so any free
 
 **The tradeoff this introduces:** unlike every other part of this widget, the icon is real Font Awesome markup, not an inline SVG, so it needs Font Awesome's CSS and font files to render. The widget checks the page for an existing Font Awesome `<link>` or Kit `<script>` tag first. If the host site already loads Font Awesome (Good Heart Tech's site does), nothing extra happens. If it does not, the widget adds one `<link>` to Font Awesome's CDN (`cdnjs.cloudflare.com`) itself. That is the one exception to this project having no other external network calls.
 
+### Position
+
+The button sits in the bottom-left corner by default. Move it to another corner with `data-position` on the script tag:
+
+```html
+<script
+  src="https://accessibility.goodhearttech.org/widget.js"
+  data-position="bottom-right"
+  defer>
+</script>
+```
+
+- Values: `bottom-left` (default), `bottom-right`, `top-left`, `top-right`
+- The options panel opens from the same corner as the button.
+- Any other value is ignored and the button stays bottom-left.
+
+Pick a corner that doesn't cover anything visitors need. Bottom corners are often shared with chat bubbles, cookie banners, and "back to top" buttons. Top corners often hold the logo or the mobile menu button, so check the site on a phone after moving it there. The button stays in its corner as the visitor scrolls, and keyboard users still reach it first, whichever corner you choose.
+
 ## Self-hosting (optional)
 
 **Most people should skip this section.** It is only for you if you want your own copy of the widget on your own domain (for example, to pin a specific version or to avoid loading a script from another host). It is not needed to use the widget.
